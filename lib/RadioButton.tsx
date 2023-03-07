@@ -43,15 +43,13 @@ export default function RadioButton({
 
   return (
       <>
-        <TouchableNativeFeedback
-            onPress={handlePress}
-            style={[
-              styles.container,
-              orientation,
-              { opacity: disabled ? 0.2 : 1 },
-              containerStyle,
-            ]}>
-          <View>
+        <TouchableNativeFeedback onPress={handlePress}>
+          <View style={[
+            styles.container,
+            orientation,
+            { opacity: disabled ? 0.2 : 1 },
+            containerStyle,
+          ]}>
             <View
                 style={[
                   styles.border,
@@ -87,6 +85,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginHorizontal: 10,
     marginVertical: 5,
+    padding: 5,
   },
   border: {
     justifyContent: 'center',
