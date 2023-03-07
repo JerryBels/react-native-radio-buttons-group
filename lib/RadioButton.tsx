@@ -1,12 +1,11 @@
-import React, {useState} from 'react';
-import {PixelRatio, Pressable, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import React from 'react';
+import {PixelRatio, StyleSheet, Text, View, TouchableNativeFeedback} from 'react-native';
 
 import { RadioButtonProps } from './types';
 
 export default function RadioButton({
   borderColor,
   color = '#444',
-  focusColor,
   containerStyle,
   description,
   descriptionStyle,
@@ -16,8 +15,6 @@ export default function RadioButton({
   labelStyle,
   layout = 'row',
   onPress,
-  onFocus,
-  onBlur,
   selected = false,
   size = 24,
   borderSize = 2,
@@ -29,8 +26,6 @@ export default function RadioButton({
 
   let orientation: any = { flexDirection: 'row' };
   let margin: any = { marginLeft: 10 };
-
-  const [displayColor, setDisplayColor] = useState(color);
 
   if (layout === 'column') {
     orientation = { alignItems: 'center' };
@@ -46,35 +41,10 @@ export default function RadioButton({
     }
   }
 
-  function handleFocus() {
-    if (disabled) {
-      return null;
-    }
-    if (onFocus) {
-      onFocus(id);
-    }
-    if(focusColor) {
-      setDisplayColor(focusColor);
-    }
-  }
-
-  function handleBlur() {
-    if (disabled) {
-      return null;
-    }
-    if (onBlur) {
-      onBlur(id);
-    }
-
-    setDisplayColor(color);
-  }
-
   return (
     <>
-      <Pressable
+      <TouchableNativeFeedback
         onPress={handlePress}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
         style={[
           styles.container,
           orientation,
@@ -104,7 +74,7 @@ export default function RadioButton({
           )}
         </View>
         {Boolean(label) && <Text style={[margin, labelStyle]}>{label}</Text>}
-      </Pressable>
+      </TouchableNativeFeedback>
       {Boolean(description) && <Text style={[margin, descriptionStyle]}>{description}</Text>}
     </>
   );

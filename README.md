@@ -106,7 +106,6 @@ Key | Type | Required | Default | Valid Values
 borderColor | string | no | color | css color formats
 borderSize | number | 2 | | positive numbers
 color | string | no | #444 | css color formats
-focusColor | string | no | | css color formats
 containerStyle | object | no | | react style
 description | string | no |  | any string
 descriptionStyle | object | no |  | react style
@@ -116,8 +115,6 @@ label | string | no |  | any string
 labelStyle | object | no |  | react style
 layout | enum | no | row | row / column
 onPress | function | no |  | any function 
-onFocus | function | no |  | any function 
-onBlur | function | no |  | any function 
 selected | boolean | no | false | true / false
 size | number | no | 24 | positive numbers
 value | string | no |  | any string
