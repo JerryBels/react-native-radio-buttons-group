@@ -4,21 +4,21 @@ import {PixelRatio, StyleSheet, Text, View, TouchableNativeFeedback} from 'react
 import { RadioButtonProps } from './types';
 
 export default function RadioButton({
-  borderColor,
-  color = '#444',
-  containerStyle,
-  description,
-  descriptionStyle,
-  disabled = false,
-  id,
-  label,
-  labelStyle,
-  layout = 'row',
-  onPress,
-  selected = false,
-  size = 24,
-  borderSize = 2,
-}: RadioButtonProps) {
+                                      borderColor,
+                                      color = '#444',
+                                      containerStyle,
+                                      description,
+                                      descriptionStyle,
+                                      disabled = false,
+                                      id,
+                                      label,
+                                      labelStyle,
+                                      layout = 'row',
+                                      onPress,
+                                      selected = false,
+                                      size = 24,
+                                      borderSize = 2,
+                                    }: RadioButtonProps) {
 
   const borderWidth = PixelRatio.roundToNearestPixel(borderSize);
   const sizeHalf = PixelRatio.roundToNearestPixel(size * 0.5);
@@ -42,41 +42,43 @@ export default function RadioButton({
   }
 
   return (
-    <>
-      <TouchableNativeFeedback
-        onPress={handlePress}
-        style={[
-          styles.container,
-          orientation,
-          { opacity: disabled ? 0.2 : 1 },
-          containerStyle,
-        ]}>
-        <View
-          style={[
-            styles.border,
-            {
-              borderColor: borderColor || color,
-              borderWidth,
-              width: sizeFull,
-              height: sizeFull,
-              borderRadius: sizeHalf,
-            },
-          ]}>
-          {selected && (
+      <>
+        <TouchableNativeFeedback
+            onPress={handlePress}
+            style={[
+              styles.container,
+              orientation,
+              { opacity: disabled ? 0.2 : 1 },
+              containerStyle,
+            ]}>
+          <View>
             <View
-              style={{
-                backgroundColor: color,
-                width: sizeHalf,
-                height: sizeHalf,
-                borderRadius: sizeHalf,
-              }}
-            />
-          )}
-        </View>
-        {Boolean(label) && <Text style={[margin, labelStyle]}>{label}</Text>}
-      </TouchableNativeFeedback>
-      {Boolean(description) && <Text style={[margin, descriptionStyle]}>{description}</Text>}
-    </>
+                style={[
+                  styles.border,
+                  {
+                    borderColor: borderColor || color,
+                    borderWidth,
+                    width: sizeFull,
+                    height: sizeFull,
+                    borderRadius: sizeHalf,
+                  },
+                ]}>
+              {selected && (
+                  <View
+                      style={{
+                        backgroundColor: color,
+                        width: sizeHalf,
+                        height: sizeHalf,
+                        borderRadius: sizeHalf,
+                      }}
+                  />
+              )}
+            </View>
+            {Boolean(label) && <Text style={[margin, labelStyle]}>{label}</Text>}
+          </View>
+        </TouchableNativeFeedback>
+        {Boolean(description) && <Text style={[margin, descriptionStyle]}>{description}</Text>}
+      </>
   );
 }
 
